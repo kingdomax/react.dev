@@ -1,14 +1,6 @@
-import { useState } from "react";
-
-export const Square = ({ value, onSquareClick }) => {
-    //const [value, setValue] = useState(null);
-//
-    //const handleClick = () => {
-    //    setValue("X");
-    //};
-    
+export const Square = ({ value, isHighlight, onSquareClick }) => {  
     return  <button 
-                className="square"
+                className={`square${isHighlight ? " highlight" : ""}`}
                 onClick={onSquareClick}
             >
                 {value}

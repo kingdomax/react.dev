@@ -7,11 +7,12 @@ export const Game = () => {
 	const [sortByAsc, setSortByAsc] = useState(true);
 	const xIsNext = currentMove % 2 === 0;
 	const currentSquares = history[currentMove];
-	
-	const setStatus = () => {
-		const winner = calculateWinner(currentSquares);
-		if (winner){ return "Winner: " + winner; }
-		else { return "Next Player: " + (xIsNext ? "X" : "O"); }
+	const winnerInfo = calculateWinner(currentSquares);
+
+	const setStatusText = () => {
+		if (winnerInfo){ return "Winner: " + winnerInfo.name; }
+		else if (currentMove != 9) { return "Next Player: " + (xIsNext ? "X" : "O"); }
+		else { return "Draw"; }
 	};
 
 	const handlePlay = (nextSquares) => {
@@ -41,9 +42,9 @@ export const Game = () => {
         <div className="game">
           <div className="game-board">
             <Board
-				status={setStatus()}
+				status={setStatusText()}
 				xIsNext={xIsNext}
-				hasWinner={calculateWinner(currentSquares)}
+				winner={winnerInfo}
 				squares={currentSquares}
 				onPlay={handlePlay}
 			/>
@@ -70,7 +71,10 @@ const calculateWinner = (squares) => {
 	for (let i = 0; i < lines.length; i++) {
 	  	const [a, b, c] = lines[i];
 	  	if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-			return squares[a];
+			return {
+				name: squares[a],
+				winnerIndex: lines[i],
+			};
 	  	}
 	}
 	return null;

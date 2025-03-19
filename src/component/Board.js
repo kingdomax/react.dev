@@ -1,9 +1,15 @@
 import { Square } from "./Square";
 
-export const Board = ({ status, xIsNext, hasWinner, squares, onPlay }) => {
+export const Board = ({ 
+	status,
+	xIsNext,
+	winner,
+	squares,
+	onPlay 
+}) => {
 
 	const handleClick = (i) => {
-		if (squares[i] || hasWinner) { return; }
+		if (squares[i] || winner) { return; }
 		
 		let nextSquares = squares.slice(); 		// no params mean shallow copy
 		nextSquares[i] = xIsNext ? "X" : "O";
@@ -22,6 +28,7 @@ export const Board = ({ status, xIsNext, hasWinner, squares, onPlay }) => {
 				const squareIndex = (i * numberOfRows) + j;
 				eachRow.push(<Square 
 								key={squareIndex}
+								isHighlight={winner?.winnerIndex?.includes(squareIndex) ?? false}
 								value={squares[squareIndex]}
 								onSquareClick={() => handleClick(squareIndex)} 
 							/>);
