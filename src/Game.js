@@ -26,9 +26,11 @@ export const Game = () => {
 
 	const moves = history.map((squares, move) => {
 		const description = move > 0 ? "Go to move #" + move : "Go to game start";
+		const showButton = <button onClick={() => jumpTo(move)}>{description}</button>;
+		const showText = "You are at move #" + move;
 		return (
 		  <li key={move}>
-			<button onClick={() => jumpTo(move)}>{description}</button>
+			{currentMove != move ? showButton : showText}
 		  </li>
 		);
 	});
