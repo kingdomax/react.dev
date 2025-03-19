@@ -1,10 +1,10 @@
 import { useState } from "react";
-
 import { Board } from "./component/Board";
 
 export const Game = () => {
 	const [currentMove, setCurrentMove] = useState(0);
 	const [history, setHistory] = useState([Array(9).fill(null)]);
+	const [sortByAsc, setSortByAsc] = useState(true);
 	const xIsNext = currentMove % 2 === 0;
 	const currentSquares = history[currentMove];
 	
@@ -20,20 +20,22 @@ export const Game = () => {
 		setCurrentMove(nextHistory.length - 1);
 	};
 
-	const jumpTo = (nextMove) => {
-		setCurrentMove(nextMove);
+	const moveList = () => {
+		const sortedHistory = sortByAsc ? history : [...history].reverse(); // Reverse if descending
+		return sortedHistory.map((_, index) => {
+		  const move = sortByAsc ? index : history.length - 1 - index; // Correct move numbering
+		  const description = move > 0 ? `Go to move #${move}` : "Go to game start";
+		  return (
+			<li key={move}>
+			  {currentMove !== move ? (
+				<button onClick={() => setCurrentMove(move)}>{description}</button>
+			  ) : (
+				<span>You are at move #{move}</span>
+			  )}
+			</li>
+		  );
+		});
 	};
-
-	const moves = history.map((squares, move) => {
-		const description = move > 0 ? "Go to move #" + move : "Go to game start";
-		const showButton = <button onClick={() => jumpTo(move)}>{description}</button>;
-		const showText = "You are at move #" + move;
-		return (
-		  <li key={move}>
-			{currentMove != move ? showButton : showText}
-		  </li>
-		);
-	});
 
 	return (
         <div className="game">
@@ -47,7 +49,8 @@ export const Game = () => {
 			/>
           </div>
           <div className="game-info">
-            <ol>{moves}</ol>
+			<button onClick={() => setSortByAsc(!sortByAsc)}>sort</button>
+            <ol reversed={!sortByAsc}>{moveList()}</ol>
           </div>
         </div>
 	);
