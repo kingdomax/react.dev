@@ -10,9 +10,33 @@ export const Board = ({ status, xIsNext, hasWinner, squares, onPlay }) => {
 		onPlay(nextSquares);
 	};
 
+	const boardRows = () => {
+		const numberOfRows = 3;
+		const numberOfColumns = 3;
+		let boardRows = [];
+
+		for (var i=0; i<numberOfRows; i++) {
+			let eachRow = [];
+
+			for (var j=0; j<numberOfColumns; j++) {
+				const squareIndex = (i * numberOfRows) + j;
+				eachRow.push(<Square 
+								key={squareIndex}
+								value={squares[squareIndex]}
+								onSquareClick={() => handleClick(squareIndex)} 
+							/>);
+			}
+
+			boardRows.push(<div key={i} className="board-row">{eachRow}</div>);
+		}
+
+		return boardRows;
+	};
+
 	return  <>
 				<div className="status">{status}</div>
-				<div className="board-row">
+				{boardRows()}
+				{/*<div className="board-row">
 					<Square value={squares[0]} onSquareClick={() => handleClick(0)} />
 					<Square value={squares[1]} onSquareClick={() => handleClick(1)} />
 					<Square value={squares[2]} onSquareClick={() => handleClick(2)} />
@@ -26,6 +50,6 @@ export const Board = ({ status, xIsNext, hasWinner, squares, onPlay }) => {
 					<Square value={squares[6]} onSquareClick={() => handleClick(6)} />
 					<Square value={squares[7]} onSquareClick={() => handleClick(7)} />
 					<Square value={squares[8]} onSquareClick={() => handleClick(8)} />
-				</div>
+				</div>*/}
 			</>;
 };
