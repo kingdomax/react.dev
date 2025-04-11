@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Board } from "./component/Board";
-import { calculateWinner } from "./service/calculateWinner";
+import { Board } from "./Board";
+import { ReactPlaygroundOne } from "./ReactPlaygroundOne";
+import { calculateWinner } from "../service/calculateWinner";
 
 export const Game = () => {
     const [currentMove, setCurrentMove] = useState(0);
@@ -77,7 +78,7 @@ export const Game = () => {
                 <div className="temp-item">10</div>
             </div>
 
-            <div className="game-container"></div>
+            <ReactPlaygroundOne />
         </>
     );
 };
