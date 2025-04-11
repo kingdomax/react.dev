@@ -48,20 +48,36 @@ export const Game = () => {
     };
 
     return (
-        <div className="game">
-            <div className="game-board">
-                <Board
-                    status={setStatusText()}
-                    xIsNext={xIsNext}
-                    winner={winnerInfo}
-                    squares={currentSquares}
-                    onPlay={handlePlay}
-                />
+        <>
+            <div className="game-container">
+                <div className="game-board">
+                    <Board
+                        status={setStatusText()}
+                        xIsNext={xIsNext}
+                        winner={winnerInfo}
+                        squares={currentSquares}
+                        onPlay={handlePlay}
+                    />
+                </div>
+                <div className="game-info">
+                    <button onClick={() => setSortByAsc(!sortByAsc)}>
+                        sort
+                    </button>
+                    <ol reversed={!sortByAsc}>{moveList()}</ol>
+                </div>
+                <div className="temp-item">1</div>
+                <div className="temp-item">2</div>
+                <div className="temp-item">3</div>
+                <div className="temp-item">4</div>
+                <div className="temp-item">5</div>
+                <div className="temp-item">6</div>
+                <div className="temp-item">7</div>
+                <div className="temp-item">8</div>
+                <div className="temp-item">9</div>
+                <div className="temp-item">10</div>
             </div>
-            <div className="game-info">
-                <button onClick={() => setSortByAsc(!sortByAsc)}>sort</button>
-                <ol reversed={!sortByAsc}>{moveList()}</ol>
-            </div>
-        </div>
+
+            <div className="game-container"></div>
+        </>
     );
 };
