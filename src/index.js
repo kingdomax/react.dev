@@ -6,7 +6,7 @@ import { Game } from "./component/Game";
 
 const root = createRoot(document.getElementById("root"));
 root.render(
-    <StrictMode>
-        <Game />
-    </StrictMode>
+    //<StrictMode>
+    <Game />
+    //</StrictMode>
 );

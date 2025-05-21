@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { testPromise } from "../service/promiseStuff";
 
 export const ReactPlaygroundOne = () => {
     const [data, setData] = useState([]);
@@ -22,6 +23,7 @@ export const ReactPlaygroundOne = () => {
         };
 
         fetchApi();
+        testPromise();
     }, []);
 
     const handleToggle = (id) => {
