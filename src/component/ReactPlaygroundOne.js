@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { testArray } from "../service/arrayStuff";
 import { testPromise } from "../service/promiseStuff";
 
 export const ReactPlaygroundOne = () => {
@@ -23,7 +24,8 @@ export const ReactPlaygroundOne = () => {
         };
 
         fetchApi();
-        testPromise();
+        // testPromise();
+        testArray();
     }, []);
 
     const handleToggle = (id) => {
