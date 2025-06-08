@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { AppContext } from "./AppContextProvider";
 
 export const ReactPlaygroundTwo = () => {
     const [counter, setCounter] = useState(0);
+    const { appContext } = useContext(AppContext);
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -11,5 +13,10 @@ export const ReactPlaygroundTwo = () => {
         return () => clearInterval(intervalId); // Cleanup interval on component unmount or before next effect
     }, []);
 
-    return <div>Automatic Counter (secs): {counter}</div>;
+    return (
+        <div className="playground-container">
+            <div>Automatic Counter: {counter}s</div>
+            <div>Secret Key from AppContext: {appContext.secretKey}</div>
+        </div>
+    );
 };

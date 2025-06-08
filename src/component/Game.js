@@ -78,9 +78,6 @@ export const Game = () => {
                 <div className="temp-item">9</div>
                 <div className="temp-item">10</div>
             </div>
-
-            <ReactPlaygroundOne />
-            <ReactPlaygroundTwo />
         </>
     );
 };

@@ -25,7 +25,7 @@ export const ReactPlaygroundOne = () => {
 
         fetchApi();
         // testPromise();
-        testArray();
+        // testArray();
     }, []);
 
     const handleToggle = (id) => {
