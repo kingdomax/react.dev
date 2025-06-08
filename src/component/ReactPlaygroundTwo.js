@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { AppContext } from "./AppContextProvider";
 
-export const ReactPlaygroundTwo = () => {
+export default function ReactPlaygroundTwo() {
     const [counter, setCounter] = useState(0);
     const { appContext } = useContext(AppContext);
 
@@ -19,4 +19,4 @@ export const ReactPlaygroundTwo = () => {
             <div>Secret Key from AppContext: {appContext.secretKey}</div>
         </div>
     );
-};
+}

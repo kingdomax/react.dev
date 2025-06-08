@@ -1,4 +1,5 @@
 @import url("react-play-ground.css");
+@import url("game.css");
 
 * {
     box-sizing: border-box;
@@ -56,64 +57,4 @@ body {
     font-family: sans-serif;
     margin: 20px;
     padding: 0;
-}
-
-.square {
-    background: #fff;
-    border: 1px solid #999;
-    float: left;
-    font-size: 24px;
-    font-weight: bold;
-    line-height: 34px;
-    height: 34px;
-    margin-right: -1px;
-    margin-top: -1px;
-    padding: 0;
-    text-align: center;
-    width: 34px;
-}
-
-.square.highlight {
-    color: red;
-}
-
-.board-row:after {
-    clear: both;
-    content: "";
-    display: table;
-}
-
-.status {
-    margin-bottom: 10px;
-}
-
-.game-container {
-    border: 5px solid black;
-    margin-bottom: 10px;
-
-    display: flex;
-    flex-direction: row;
-    justify-content: start; /* align item in main axis */
-    align-items: center; /* align item in cross (second) axis */
-    flex-wrap: wrap; /* default is no wrap, it allow child item to go into another line */
-}
-
-.game-board {
-    flex-grow: 1; /* define how large the item compare to other item */
-}
-
-.game-info {
-    flex-grow: 2;
-}
-
-.game-info ol {
-    margin-bottom: 0px;
-}
-
-.temp-item {
-    flex-basis: 70px;
-    height: 100px;
-    background: violet;
-    border: 2px solid blueviolet;
-    text-align: center;
 }

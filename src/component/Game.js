@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { Board } from "./Board";
-import { ReactPlaygroundOne } from "./ReactPlaygroundOne";
-import { ReactPlaygroundTwo } from "./ReactPlaygroundTwo";
 import { calculateWinner } from "../service/calculateWinner";
 
 export const Game = () => {
