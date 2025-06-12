@@ -29,35 +29,26 @@ public static class RenderCityMapEndpoint
         return TypedResults.File(pdf, MediaTypeNames.Application.Pdf, name + ".pdf");
     }
 
-    // Make own repo
-    // Implement a feature to allow users to download PDF maps for multiple cities in a single ZIP archive.
-    // public static async Task<FileContentHttpResult> ExecuteMultiple(string name, IBrowserWrapper browserWrapper)
-    // {
-    //     var multipleCities = name.Split(",");
-    // 
-    //     List<byte[]> pdfList = new List<byte[]>();
-    //     foreach (var city in multipleCities)
-    //     {
-    //         var aPdf = await CreatePdf(city, browserWrapper);
-    //         pdfList.Add(aPdf);
-    //     }
-    // 
-    //      using var memoryStream = new MemoryStream();
-    //         using (var archive = new ZipArchive(memoryStream, ZipArchiveMode.Create, leaveOpen: true))
-    //         {
-    //             foreach (var city in multipleCities)
-    //             {
-    //                 var pdf = await CreatePdf(city, browserWrapper);
-    //                 var entry = archive.CreateEntry($"{city}.pdf");
-    // 
-    //                 using var entryStream = entry.Open();
-    //                 await entryStream.WriteAsync(pdf, 0, pdf.Length);
-    //             }
-    //         }
-    // 
-    //         memoryStream.Seek(0, SeekOrigin.Begin);
-    //        return TypedResults.File(memoryStream.ToArray(), MediaTypeNames.Application.Zip, "city-maps.zip");
-    // }
+    //public static async Task<IResult> Execute(string name, IBrowserWrapper browserWrapper)
+    //{
+    //    var cities = name.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+    //    if (cities.Length == 0) return Results.BadRequest("No cities provided.");
+    //
+    //    var pdfs = await Task.WhenAll(cities.Select(city => CreatePdf(city, browserWrapper)));
+    //
+    //    using var ms = new MemoryStream();
+    //    using var archive = new ZipArchive(ms, ZipArchiveMode.Create, true);
+    //
+    //    for (int i = 0; i < cities.Length; i++)
+    //    {
+    //        var entry = archive.CreateEntry($"{cities[i]}.pdf");
+    //        using var stream = entry.Open();
+    //        await stream.WriteAsync(pdfs[i]);
+    //    }
+    //
+    //    ms.Seek(0, SeekOrigin.Begin);
+    //    return TypedResults.File(ms.ToArray(), "application/zip", "city-maps.zip");
+    //}
 
     private static async Task<byte[]> CreatePdf(string cityName, IBrowserWrapper browserWrapper)
     {
