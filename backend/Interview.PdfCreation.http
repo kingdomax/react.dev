@@ -1,0 +1,6 @@
+@Interview.PdfCreation_HostAddress = http://localhost:5295
+
+GET {{Interview.PdfCreation_HostAddress}}/api/render/city?city=Darmstadt
+Accept: application/pdf
+
+###
