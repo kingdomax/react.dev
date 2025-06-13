@@ -40,7 +40,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors();
-app.MapGet("/api/render/city", RenderCityMapEndpoint.Execute).WithOpenApi();
+app.MapGet("/api/render/city", RenderCityMapEndpoint.GetPdfFile).WithOpenApi();
 
 app.Run();
 
