@@ -6,10 +6,13 @@ export const ReactPlaygroundOne = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
+        const controller = new AbortController();
+
         const fetchApi = async () => {
             try {
                 const response = await fetch(
-                    "https://jsonplaceholder.typicode.com/todos"
+                    "https://jsonplaceholder.typicode.com/todos",
+                    { signal: controller.signal }
                 );
 
                 if (!response.ok) {
@@ -26,6 +29,10 @@ export const ReactPlaygroundOne = () => {
         fetchApi();
         // testPromise();
         // testArray();
+
+        return () => {
+            controller.abort(); // Abort fetch
+        };
     }, []);
 
     const handleToggle = (id) => {
