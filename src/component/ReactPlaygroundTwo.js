@@ -3,7 +3,7 @@ import { AppContext } from "./AppContextProvider";
 
 export default function ReactPlaygroundTwo() {
     const [counter, setCounter] = useState(0);
-    const { appContext } = useContext(AppContext);
+    const { secretKey, setSecretKey } = useContext(AppContext);
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -16,7 +16,7 @@ export default function ReactPlaygroundTwo() {
     return (
         <div className="playground-container">
             <div>Automatic Counter: {counter}s</div>
-            <div>Secret Key from AppContext: {appContext.secretKey}</div>
+            <div>Secret Key from AppContext: {secretKey}</div>
         </div>
     );
 }

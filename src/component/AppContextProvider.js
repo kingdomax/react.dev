@@ -3,10 +3,10 @@ import { createContext, useState } from "react";
 export const AppContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
-    const [appContext, setAppContext] = useState({ secretKey: "abc" });
+    const [secretKey, setSecretKey] = useState("abc");
 
     return (
-        <AppContext.Provider value={{ appContext, setAppContext }}>
+        <AppContext.Provider value={{ secretKey, setSecretKey }}>
             {children}
         </AppContext.Provider>
     );

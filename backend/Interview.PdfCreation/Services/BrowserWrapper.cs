@@ -8,7 +8,7 @@ public class BrowserWrapper : IBrowserWrapper
     private Lazy<Task<IBrowser>> _browser;
     public BrowserWrapper()
     {
-        _browser = new Lazy<Task<IBrowser>>(InitializeBrowser, false);
+        _browser = new Lazy<Task<IBrowser>>(InitializeBrowser, false); // Lazy is delaying init class until it is being used
     }
 
     private async Task<IBrowser> InitializeBrowser()
@@ -20,6 +20,6 @@ public class BrowserWrapper : IBrowserWrapper
     public async Task<IPage> GetPage()
     {
         var browser = await _browser.Value;
-        return await browser.NewPageAsync(new BrowserNewPageOptions() { Locale = "en-US"});
+        return await browser.NewPageAsync(new BrowserNewPageOptions() { Locale = "en-US" });
     }
 }
