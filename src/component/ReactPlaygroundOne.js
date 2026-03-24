@@ -26,8 +26,8 @@ export const ReactPlaygroundOne = () => {
             }
         };
 
-        fetchApi();
-        // testPromise();
+        // fetchApi();
+        testPromise();
         // testArray();
 
         return () => {

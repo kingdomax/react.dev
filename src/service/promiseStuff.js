@@ -48,7 +48,7 @@ const promiseAll = async () => {
 const promiseAllSettled = async () => {
     const first = createPromise("first", false, 1000);
     const second = createPromise("second", false, 2000);
-    const third = createPromise("third", false, 3000);
+    const third = createPromise("third", true, 3000);
 
     const result = await Promise.allSettled([first, second, third]);
     result.forEach((x) => console.log(x));
