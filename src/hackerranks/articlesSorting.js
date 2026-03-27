@@ -5,22 +5,22 @@ import "./App.css";
 import React from "react";
 
 function App({ articles }) {
-    const [articlesState, setArticles] = React.useState([
-        ...articles.sort((a, b) => b.upvotes - a.upvotes),
-    ]);
+    const [articlesState, setArticlesState] = React.useState(
+        [...articles].sort((a, b) => b.upvotes - a.upvotes),
+    );
 
     const handleMostUpvoted = () => {
-        setArticles([
-            ...articlesState.sort((a, b) => b.upvotes - a.upvotes), // O (n log n)
-        ]);
+        setArticlesState(
+            [...articlesState].sort((a, b) => b.upvotes - a.upvotes), // don't mutate state, create new one before sorting O (n log n)
+        );
     };
 
     const handleMostRecent = () => {
-        setArticles([
-            ...articlesState.sort(
+        setArticlesState(
+            [...articlesState].sort(
                 (a, b) => new Date(b.date) - new Date(a.date),
             ),
-        ]);
+        );
     };
 
     return (
@@ -52,8 +52,6 @@ function App({ articles }) {
     );
 }
 
-export default App;
-
 function Articles({ articles = [] }) {
     return (
         <div className="card w-50 mx-auto">
@@ -80,3 +78,5 @@ function Articles({ articles = [] }) {
         </div>
     );
 }
+
+export default App;
