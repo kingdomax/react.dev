@@ -9,7 +9,7 @@ const ReactPlaygroundTwo = lazy(
     () =>
         new Promise((resolve) =>
             setTimeout(
-                () => resolve(import("./component/ReactPlaygroundTwo")),
+                () => resolve(import("./component/SetIntervalCounter")),
                 5000
             )
         )

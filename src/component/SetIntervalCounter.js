@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { AppContext } from "./AppContextProvider";
 
-export default function ReactPlaygroundTwo() {
+export default function SetIntervalCounter() {
     const [counter, setCounter] = useState(0);
     const { secretKey, setSecretKey } = useContext(AppContext);
 
